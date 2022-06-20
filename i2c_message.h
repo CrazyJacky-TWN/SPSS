@@ -3,6 +3,11 @@
 
 #include <stdint.h>
 
+/* i2c message return code */
+#define I2C_MSG_OK		0x00U
+#define I2C_MSG_ERR		0xFFU
+
+#define SUPPORT_I2C_NUMBER	13U
 
 enum i2c_message{
 	DISPLAY_STATUS = 0x00U,
@@ -39,6 +44,23 @@ enum i2c_message_length{
 typedef enum i2c_message en_i2c_msg_len;
 
 
+typedef enum{
+	LCDERR 	= 0x00000100U,
+	BLERR 	= 0x00000200U,
+	TERR 	= 0x00000400U,
+	DCERR 	= 0x00000800U,
+	RST_RQ 	= 0x00001000U,
+	LLOSS 	= 0x00002000U,
+	TSCERR 	= 0x00004000U,
+	TCERR 	= 0x00008000U,
+	DISP_ST	= 0x00000001U,
+	TSC_ST 	= 0x00000002U,
+	INIT 	= 0x00000004U,
+	BL_ST 	= 0x00000040U,
+	DISPERR	= 0x00000080U
+}te_display_status;
+
+
 
 
 typedef struct msg_content{
@@ -50,5 +72,7 @@ typedef struct msg_content{
 
 void Protocol_SupportInit(void);
 void Protocol_check(void);
-
+uint32_t Protocol_OverWrite(en_i2c_msg teSubaddr, uint8_t *pu8Data, uint32_t u32InputLen);
+uint32_t Protocol_GetBit(en_i2c_msg teSubaddr, te_display_status teBit);
+uint32_t Protocol_UpdateBit(en_i2c_msg teSubaddr, te_display_status teBit, uint8_t u8EnableDisable);
 #endif
