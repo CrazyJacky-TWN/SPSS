@@ -1,0 +1,11 @@
+Before using the simulation:
+1) Copy 3 files in DLL folder
+2) Paste them into C:\Program Files\Vector CANoe 16\Exec32 and replace existing DLLs 
+(This is for CANoe 16. If you are using CANoe 8.5 you need to replace the DLLs in the respective installation path)
+
+To start the general restbus simulation use one of the following CANoe configurations under /HMI_EVO_V4/Development:
+1) For CANoe 8.5: HMI_EVO_MBT_CANoe8.5.cfg
+2) For CANoe 16: HMI_EVO - MBT.cfg
+
+The other configurations are for ASIL or DTNA specific testing.
+
